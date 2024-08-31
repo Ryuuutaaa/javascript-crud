@@ -10,8 +10,13 @@ const db = mysql.createConnection({
   password: "",
 });
 
-app.get("/", (req, res) => {
-  res.send("OK ROUTE IS OPEN");
+db.connect((err) => {
+  if (err) throw err;
+  console.log("Database Connected");
+
+  app.get("/", (req, res) => {
+    res.send("OK ROUTE IS OPEN");
+  });
 });
 
 app.listen(8000, () => {
